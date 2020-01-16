@@ -50,7 +50,8 @@ The project's future direction is to analyze or process results from given test 
 
 
 - Key: `tests`
-    - type: <array-of-strings>
+    - `Required`
+    - type: `<array-of-strings>`
     - accepted string values: 
         - `front-end`
         - `back-end`
@@ -59,13 +60,15 @@ The project's future direction is to analyze or process results from given test 
     - `back-end`: Isolated for test cases related to the server or API testing
     - `end-to-end`: Isolated for test cases related to web app operations, spanning from front-end to back-end (e.g.,Submitting a form via click event and expecting a response from a server)
 - Key: `url`
-    - type: <string>
+    - `Required`
+    - type: `<string>`
     - accepted string values:  
         - <any>
     - requisite(s): {lease provide a valid and desired web URL to test
 
 - Key: `verbose`
-    - type: <boolean>
+    - `Optional`
+    - type: `<boolean>`
     - accepted values:
         - `true` or `false`
     - description: When set to true, this enable logging of more infos on your `process.stdout`
@@ -86,3 +89,12 @@ The project's future direction is to analyze or process results from given test 
 - Transfer `jest-puppeteer.config.js` file under `config` directory
 - Support for `python` environment
 - Setup for test results processing
+
+
+## Error(s) 
+- For fixes to error(s), feel free to submit a PR/MR
+
+
+
+## Author 
+- Robert Espina

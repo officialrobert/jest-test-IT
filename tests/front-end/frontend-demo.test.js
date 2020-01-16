@@ -1,5 +1,7 @@
 beforeAll(async () => {
-  await page.goto(process.env.TEST_URL, { waitUntil: 'domcontentloaded' });
+  await page.goto(process.env.TEST_URL || 'https://www.google.com/', {
+    waitUntil: 'domcontentloaded',
+  });
 });
 
 describe('Test homepage of google search', () => {

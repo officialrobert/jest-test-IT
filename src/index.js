@@ -29,7 +29,7 @@ class Main {
       });
     }
 
-    return fullPAth;
+    return fullPAth.length === 0 ? null : fullPAth;
   };
 
   start = async () => {
@@ -41,27 +41,32 @@ class Main {
         { inherit: true, jestTest: false }
       );
 
-      const res = await Core.onSystem(
-        `jest ${testPaths} --json --useStderr --no-color > results.json`,
-        {
-          inherit: false,
-          jestTest: true,
-          url: this.config.url || 'https://www.google.com/',
-        }
-      );
-
-      if (res.jestData) {
-        await Core.onSystem(
-          `echo TEST RESULTS (please see results.json in FW's directory) -`,
+      if (testPaths === null) {
+        console.log('Please provide a valid value(s) for tests in your config');
+        process.exit(1);
+      } else {
+        const res = await Core.onSystem(
+          `jest ${testPaths} --json --useStderr --no-color > results.json`,
           {
-            inherit: true,
-            jestTest: false,
+            inherit: false,
+            jestTest: true,
+            url: this.config.url || 'https://www.google.com/', // default url === google search homepage
           }
         );
 
-        if (this.config.verbose) {
-          console.log('VERBOSE IS SET TO TRUE\n\n');
-          console.log(res);
+        if (res.jestData) {
+          await Core.onSystem(
+            `echo TEST RESULTS (please see results.json in FW's directory) -`,
+            {
+              inherit: true,
+              jestTest: false,
+            }
+          );
+
+          if (this.config.verbose) {
+            console.log('VERBOSE IS SET TO TRUE\n\n');
+            console.log(res);
+          }
         }
       }
     } catch (err) {
