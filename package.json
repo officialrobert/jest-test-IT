@@ -1,0 +1,56 @@
+{
+  "name": "ui-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js && node dist/main.js",
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.1.0",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "jest-puppeteer": "^4.4.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "jest": {
+    "preset":"jest-puppeteer",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testMatch": [
+      "<rootDir>/tests/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  }
+}

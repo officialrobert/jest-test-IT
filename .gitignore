@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# project generated distribution
+/dist
+results.json
+results.json*

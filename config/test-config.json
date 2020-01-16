@@ -1,0 +1,5 @@
+{
+    "tests": ["front-end"],
+    "url": "https://www.google.com/",
+    "verbose": true
+}
